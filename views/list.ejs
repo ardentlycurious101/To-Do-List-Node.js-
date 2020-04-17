@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>To Do List</title>
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+
+    <div class="box" id="heading">
+      <h1><%= day %></h1>
+    </div>
+
+    <div>
+      <form id="categories" method="get">
+        <button type="text" name="work" class="box item categories" formaction="/work">Work</button>
+        <button type="text" name="etc" class="box item categories" formaction="etc">Etc</button>
+      </form>
+    </div>
+
+    <div class="box">
+      <% for (var i=0; i<itemsList.length; i++) { %>
+        <div class="item">
+          <input type="checkbox">
+          <p><%= itemsList[i] %></p>
+        </div>
+      <% } %>
+
+      <form class="item" action="/" method="post">
+        <input type="text" name="newItem" placeholder="Add new item" autocomplete="off">
+        <button type="submit" name="add-button" class="round-button">+</button>
+      </form>
+    </div>
+  </body>
+</html>
