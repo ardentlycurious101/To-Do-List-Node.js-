@@ -1,10 +1,10 @@
 const bodyParser = require("body-parser");
 const express = require('express');
 const date = require(__dirname + "/date.js");
-let app = express();
+const app = express();
 
-var workItems = ["code", "exercise"];
-var etcItems = ["shower Brian with love"];
+const workItems = ["code", "exercise"];
+const etcItems = ["shower Brian with love"];
 const today = date.getDate();
 
 app.use(express.static("public"));
@@ -33,14 +33,14 @@ app.get("/work", (req, res) => {
 
 app.post("/work", (req, res) => {
   console.log(req.body);
-  var item = req.body.newItem;
+  const item = req.body.newItem;
   workItems.push(item);
   res.redirect("/work");
 });
 
 app.post("/etc", (req, res) => {
   console.log(req.body);
-  var item = req.body.newItem;
+  const item = req.body.newItem;
   etcItems.push(item);
   res.redirect("/etc");
 });
@@ -50,7 +50,7 @@ app.listen(3000, function() {
 });
 
 function getAllItems(list1, list2) {
-  let newList = []
+  const newList = []
   for (var i=0; i<list1.length; i++) {
     newList.push(list1[i]);
   }
