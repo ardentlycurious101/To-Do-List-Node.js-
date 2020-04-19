@@ -11,16 +11,18 @@
     </div>
 
     <div class="box">
-      <% for (var i=0; i<itemsList.length; i++) { %>
-        <div class="item">
-          <input type="checkbox">
-          <p><%= itemsList[i] %></p>
-        </div>
-      <% } %>
+      <% itemsList.forEach((item) => { %>
+        <form action="/delete/<%= category %>" method="post">
+          <div class="item">
+            <input type="checkbox" name="checkbox" value=<%= item._id %> onChange="this.form.submit()">
+            <p name="item"><%= item.name %></p>
+          </div>
+        </form>
+      <% }) %>
 
       <form class="item" action="/<%= category %>" method="post">
         <input type="text" name="newItem" placeholder="Add new item" autocomplete="off">
-        <button type="submit" name="add-button" class="round-button" value=<%= category %>>+</button>
+        <button type="submit" name="addButton" class="round-button" value=<%= category %>>+</button>
       </form>
     </div>
 <%- include("footer") -%>
